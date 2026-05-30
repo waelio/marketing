@@ -6,7 +6,6 @@ import rateLimit from 'express-rate-limit';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { authRouter } from './routes/auth.js';
 import { campaignsRouter } from './routes/campaigns.js';
 import { creativesRouter } from './routes/creatives.js';
@@ -17,7 +16,6 @@ import { adminRouter } from './routes/admin.js';
 import { adsRouter } from './routes/ads.js';
 import { errorHandler } from './middleware/error.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = Number(process.env.API_PORT) || 4000;
 
@@ -40,7 +38,7 @@ app.use('/api/ads', adLimiter);
 app.use('/api/impression', adLimiter);
 app.use('/api/click', adLimiter);
 
-const openapiPath = path.join(__dirname, '../../docs/openapi.yaml');
+const openapiPath = path.join(process.cwd(), 'docs/openapi.yaml');
 try {
   const swaggerDoc = YAML.load(openapiPath);
   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
@@ -49,7 +47,7 @@ try {
 }
 
 app.get('/health', (_req, res) => res.json({ status: 'ok', service: 'waelio-api' }));
-app.use('/sdk.js', express.static(path.join(__dirname, '../../../packages/sdk/dist')));
+app.use('/sdk.js', express.static(path.join(process.cwd(), 'packages/sdk/dist')));
 
 app.use('/api/auth', authRouter);
 app.use('/api/campaigns', campaignsRouter);
