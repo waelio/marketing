@@ -155,13 +155,16 @@ async function updateStatus(
   status: 'ACTIVE' | 'PAUSED',
   from: string[],
 ) {
-  const where =
-    req.user!.role === 'ADMIN'
-      ? { id, status: { in: from as ('ACTIVE' | 'PAUSED')[] } }
-      : {
-          id,
-          status: { in: from as ('ACTIVE' | 'PAUSED')[] },
-          advertiser: { userId: req.user!.id },
-        };
-  await prisma.campaign.updateMany({ where, data: { status } });
+  if (req.user!.role === 'ADMIN') {
+    await prisma.campaign.updateMany({
+      where: { id, status: { in: from as ('ACTIVE' | 'PAUSED')[] } },
+      data: { status },
+    });
+    return;
+  }
+  const advertiserId = await getAdvertiserId(req.user!.id);
+  await prisma.campaign.updateMany({
+    where: { id, advertiserId: advertiserId!, status: { in: from as ('ACTIVE' | 'PAUSED')[] } },
+    data: { status },
+  });
 }
