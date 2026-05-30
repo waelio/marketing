@@ -1,0 +1,31 @@
+FROM node:20-alpine AS base
+WORKDIR /app
+RUN apk add --no-cache openssl
+
+FROM base AS deps
+COPY package.json package-lock.json* ./
+COPY apps/api/package.json ./apps/api/
+COPY packages/shared/package.json ./packages/shared/
+COPY packages/analytics/package.json ./packages/analytics/
+COPY prisma ./prisma/
+RUN npm ci --workspace=@waelio/api --workspace=@waelio/shared --workspace=@waelio/analytics 2>/dev/null || npm install
+
+FROM base AS builder
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npx prisma generate
+RUN npm run build --workspace=@waelio/shared
+RUN npm run build --workspace=@waelio/analytics
+RUN npm run build --workspace=@waelio/api
+
+FROM base AS runner
+ENV NODE_ENV=production
+COPY --from=builder /app/apps/api/dist ./apps/api/dist
+COPY --from=builder /app/apps/api/package.json ./apps/api/
+COPY --from=builder /app/packages/shared/dist ./packages/shared/dist
+COPY --from=builder /app/packages/analytics/dist ./packages/analytics/dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/prisma ./prisma
+WORKDIR /app/apps/api
+EXPOSE 4000
+CMD ["node", "dist/index.js"]
