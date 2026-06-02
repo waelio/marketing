@@ -2,14 +2,11 @@
     "name": "waelio-marketing",
     "private": true,
     "version": "0.1.0",
-    "workspaces": [
-        "apps/*",
-        "packages/*"
-    ],
     "scripts": {
-        "dev:api": "npm --workspace @waelio/api dev",
-        "dev:web": "npm --workspace @waelio/web dev",
-        "dev:admin": "npm --workspace @waelio/admin dev",
-        "build": "npm run build --workspaces"
+        "dev": "pnpm --filter @waelio/web dev",
+        "dev:api": "pnpm --filter @waelio/api dev",
+        "dev:web": "pnpm --filter @waelio/web dev",
+        "dev:admin": "pnpm --filter @waelio/admin dev",
+        "build": "pnpm -r build"
     }
 }
