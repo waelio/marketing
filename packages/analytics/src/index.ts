@@ -1,2 +1,3 @@
-export * from './metrics.js';
-export * from './aggregation.js';
+export function record(metric: string, data: Record<string, unknown>): void {
+    console.log(`Analytics event: ${metric}`, data);
+}

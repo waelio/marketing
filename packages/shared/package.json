@@ -1,15 +1,12 @@
 {
-  "name": "@waelio/shared",
-  "version": "1.0.0",
-  "private": true,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "lint": "eslint src"
-  },
-  "devDependencies": {
-    "typescript": "^5.7.2"
-  }
+    "name": "@waelio/shared",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc -p tsconfig.json"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.4"
+    }
 }

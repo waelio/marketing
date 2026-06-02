@@ -1,4 +1,11 @@
-export * from './types.js';
-export * from './constants.js';
-export * from './validation.js';
-export * from './rbac.js';
+export type Ad = {
+    placementId: string;
+    creative: string;
+    url: string;
+    image: string;
+};
+
+export type AdEvent = {
+    placementId: string;
+    timestamp?: string;
+};
