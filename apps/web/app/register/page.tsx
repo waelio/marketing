@@ -39,7 +39,10 @@ function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm border">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm border"
+    >
       <h1 className="text-2xl font-bold">Create account</h1>
       {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
       <div className="mt-4 flex gap-2">

@@ -17,9 +17,9 @@ export default function AdvertiserOverview() {
         campaigns: campaigns.length,
         active: campaigns.filter((c) => c.status === 'ACTIVE').length,
       });
-      const a = await api<{ summary: { impressions: number; clicks: number; ctr: number; revenue: number } }>(
-        '/api/analytics?days=30',
-      );
+      const a = await api<{
+        summary: { impressions: number; clicks: number; ctr: number; revenue: number };
+      }>('/api/analytics?days=30');
       setAnalytics(a);
     })();
   }, []);

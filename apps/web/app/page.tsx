@@ -24,8 +24,8 @@ export default function HomePage() {
           The ad network built for independent publishers
         </h1>
         <p className="mt-6 text-lg text-slate-600 max-w-xl">
-          Run CPC and CPM campaigns, manage creatives, and monetize your sites with geo, device,
-          and frequency targeting.
+          Run CPC and CPM campaigns, manage creatives, and monetize your sites with geo, device, and
+          frequency targeting.
         </p>
         <div className="mt-10 flex gap-4">
           <Link

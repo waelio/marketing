@@ -5,7 +5,9 @@ import { api } from '@/lib/api';
 
 export default function PlacementsPage() {
   const [websites, setWebsites] = useState<{ id: string; name: string; status: string }[]>([]);
-  const [placements, setPlacements] = useState<{ id: string; name: string; websiteId: string }[]>([]);
+  const [placements, setPlacements] = useState<{ id: string; name: string; websiteId: string }[]>(
+    [],
+  );
   const [embed, setEmbed] = useState('');
   const [form, setForm] = useState({
     websiteId: '',
@@ -73,7 +75,10 @@ export default function PlacementsPage() {
       </form>
       <ul className="mt-8 space-y-2">
         {placements.map((p) => (
-          <li key={p.id} className="bg-white p-4 rounded-xl border flex justify-between items-center">
+          <li
+            key={p.id}
+            className="bg-white p-4 rounded-xl border flex justify-between items-center"
+          >
             <span>{p.name}</span>
             <button onClick={() => showEmbed(p.id)} className="text-sm text-brand-600">
               Get embed code

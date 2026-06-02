@@ -25,7 +25,8 @@ export default function LoginPage() {
       });
       setAuth(data.accessToken, data.refreshToken);
       if (data.user.role === 'PUBLISHER') router.push('/publisher');
-      else if (data.user.role === 'ADMIN') router.push(process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001');
+      else if (data.user.role === 'ADMIN')
+        router.push(process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001');
       else router.push('/advertiser');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
@@ -34,7 +35,10 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6">
-      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm border">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm border"
+      >
         <h1 className="text-2xl font-bold">Sign in</h1>
         <p className="text-sm text-slate-500 mt-1">Waelio Marketing</p>
         {error && <p className="mt-4 text-sm text-red-600">{error}</p>}

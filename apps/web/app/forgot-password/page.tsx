@@ -19,7 +19,10 @@ export default function ForgotPasswordPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6">
-      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm border">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white p-8 rounded-xl shadow-sm border"
+      >
         <h1 className="text-2xl font-bold">Reset password</h1>
         {sent ? (
           <p className="mt-4 text-sm text-slate-600">
@@ -35,10 +38,7 @@ export default function ForgotPasswordPage() {
               className="mt-6 w-full border rounded-lg px-3 py-2"
               required
             />
-            <button
-              type="submit"
-              className="mt-4 w-full bg-brand-600 text-white py-2 rounded-lg"
-            >
+            <button type="submit" className="mt-4 w-full bg-brand-600 text-white py-2 rounded-lg">
               Send reset link
             </button>
           </>

@@ -27,9 +27,7 @@ export default function NewCampaignPage() {
         dailyBudget: form.dailyBudget ? Number(form.dailyBudget) : undefined,
         totalBudget: form.totalBudget ? Number(form.totalBudget) : undefined,
         geoTargets: form.geoTargets ? form.geoTargets.split(',').map((s) => s.trim()) : [],
-        deviceTargets: form.deviceTargets
-          ? form.deviceTargets.split(',').map((s) => s.trim())
-          : [],
+        deviceTargets: form.deviceTargets ? form.deviceTargets.split(',').map((s) => s.trim()) : [],
       }),
     });
     router.push('/advertiser/campaigns');

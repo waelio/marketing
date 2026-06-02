@@ -34,16 +34,17 @@ export default function CampaignsPage() {
 
   async function submit(id: string) {
     await api(`/api/campaigns/${id}/submit`, { method: 'POST' });
-    setCampaigns((c) =>
-      c.map((x) => (x.id === id ? { ...x, status: 'PENDING_APPROVAL' } : x)),
-    );
+    setCampaigns((c) => c.map((x) => (x.id === id ? { ...x, status: 'PENDING_APPROVAL' } : x)));
   }
 
   return (
     <div>
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Campaigns</h1>
-        <Link href="/advertiser/campaigns/new" className="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm">
+        <Link
+          href="/advertiser/campaigns/new"
+          className="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm"
+        >
           New campaign
         </Link>
       </div>

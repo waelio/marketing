@@ -59,7 +59,10 @@ export default function WebsitesPage() {
           onChange={(e) => setForm({ ...form, category: e.target.value })}
           className="border rounded-lg px-3 py-2"
         />
-        <button type="submit" className="bg-brand-600 text-white px-4 py-2 rounded-lg md:col-span-2">
+        <button
+          type="submit"
+          className="bg-brand-600 text-white px-4 py-2 rounded-lg md:col-span-2"
+        >
           Register website
         </button>
       </form>
