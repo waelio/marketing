@@ -1,0 +1,15 @@
+{
+  "name": "@waelio/sdk",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/sdk.js",
+  "scripts": {
+    "build": "tsup src/sdk.ts --format iife --global-name WaelioAds --out-dir dist --minify",
+    "dev": "tsup src/sdk.ts --format iife --global-name WaelioAds --out-dir dist --watch",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}
