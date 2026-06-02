@@ -1,1 +1,3 @@
-export declare function record(metric: string, data: Record<string, unknown>): void;
+export * from './metrics.js';
+export * from './aggregation.js';
+//# sourceMappingURL=index.d.ts.map
