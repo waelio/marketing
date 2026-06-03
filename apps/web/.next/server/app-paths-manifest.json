@@ -1,16 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/forgot-password/page": "app/forgot-password/page.js",
-  "/login/page": "app/login/page.js",
-  "/page": "app/page.js",
-  "/register/page": "app/register/page.js",
-  "/advertiser/campaigns/new/page": "app/advertiser/campaigns/new/page.js",
-  "/advertiser/analytics/page": "app/advertiser/analytics/page.js",
-  "/advertiser/creatives/page": "app/advertiser/creatives/page.js",
-  "/advertiser/campaigns/page": "app/advertiser/campaigns/page.js",
-  "/advertiser/page": "app/advertiser/page.js",
-  "/publisher/page": "app/publisher/page.js",
-  "/publisher/earnings/page": "app/publisher/earnings/page.js",
-  "/publisher/websites/page": "app/publisher/websites/page.js",
-  "/publisher/placements/page": "app/publisher/placements/page.js"
-}
+{}
